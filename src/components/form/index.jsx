@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import * as sytles from './style.module.css'
 import GreenPixeledButton from '../Green-Pixeled-Button';
 import FormLabel from '../Form-Label';
-import api from '../../service/service'
+import axios from 'axios';
 
 export default function Form({labe1, labe2, valueMax}) {
 
@@ -15,7 +15,7 @@ export default function Form({labe1, labe2, valueMax}) {
     } = useForm();
 
   const  onSubmitForm = (data) => {
-        api.get("/aventureiro")
+        axios.get("/aventureiro")
         .then((response) => {
             
             const resp = response.data[0]
