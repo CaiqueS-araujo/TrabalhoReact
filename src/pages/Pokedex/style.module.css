@@ -1,0 +1,121 @@
+.pokedexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.pokedexBody {
+  background-color: #dc0a2d;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: inset -10px -10px 0 0 rgba(0, 0, 0, 0.2), 10px 10px 20px rgba(0,0,0,0.5);
+  border: 4px solid #8b0015;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mainScreen {
+  background-color: #dedede;
+  border: 20px solid #ffffff;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.pokemonDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemonImage {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.2));
+}
+
+.pokemonId {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  color: #333;
+}
+
+.infoScreen {
+  background-color: #51ae5f;
+  border: 4px solid #2e6636;
+  border-radius: 10px;
+  height: 120px;
+  padding: 15px;
+  box-shadow: inset 4px 4px 0 0 rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.infoContent h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.infoContent p {
+  font-size: 0.6rem;
+  line-height: 1.8;
+  color: #111;
+}
+
+.systemText {
+  font-size: 0.7rem;
+  text-align: center;
+  color: #333;
+}
+
+.systemTextError {
+  font-size: 0.7rem;
+  text-align: center;
+  color: #d00;
+  font-weight: bold;
+}
+
+.searchForm {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 15px;
+  border: 4px solid #8b0015;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  outline: none;
+}
+
+.searchButton {
+  background-color: #2e3035;
+  color: white;
+  border: 4px solid #1a1c1e;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.searchButton:active {
+  transform: scale(0.95);
+}
