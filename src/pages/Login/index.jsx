@@ -2,9 +2,12 @@ import * as styles from './style.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from '../../components/form';
 import pokemonLogo from '../../assets/pokemon-logo.svg'
-
+import { useEffect } from 'react';
 
 export default function Login() {
+
+  
+useEffect(() => {localStorage.setItem("token", "")}, []);
 
   return (
     <div className={ `d-flex flex-column align-items-center  ${styles.container}`}>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_URL, PAGE_SIZE } from "../utils/constants";
 
+
 export async function fetchGenCatalog(start, end) {
   const res = await axios.get(
     `${BASE_URL}/pokemon?limit=${end - start + 1}&offset=${start - 1}`,
@@ -44,5 +45,17 @@ export async function fetchFullStats(id) {
     atk,
     def,
   };
+}
 
+export  function verifyLogin(user, navigate){
+      const url = import.meta.env.VITE_LOGIN_URL;
+
+     axios.post(`${url}`, user)
+          .then((response) => {
+                  localStorage.setItem("token", response.token);
+                  navigate("/meu-time");
+          })
+          .catch(() => {
+            alert("Credenciais incorretas!")
+          });
 }

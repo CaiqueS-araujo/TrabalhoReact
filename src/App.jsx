@@ -1,16 +1,11 @@
-
-import { Routes, Route } from "react-router-dom";
-import MyTeam from "./pages/MyTeam";
-import Login from "./pages/Login/index"
-import Pokedex from "./pages/Pokedex/index";
+import { BrowserRouter } from "react-router-dom";
+import PokemonRoutes from "./routes/PokemonRoutes";
 
 function App() {
   return (    
-    <Routes>
-      <Route path="/meu-time" element={<MyTeam />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/pokedex" element={<Pokedex />} />
-    </Routes>
+     <BrowserRouter>
+     <PokemonRoutes> </PokemonRoutes>
+     </BrowserRouter>
   );
 }
 

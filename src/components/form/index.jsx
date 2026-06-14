@@ -4,9 +4,13 @@ import { useForm } from "react-hook-form"
 import * as sytles from './style.module.css'
 import GreenPixeledButton from '../Green-Pixeled-Button';
 import FormLabel from '../Form-Label';
-import axios from 'axios';
+import { verifyLogin } from '../../services/pokeApi';
+import { useNavigate } from 'react-router-dom';
 
 export default function Form({labe1, labe2, valueMax}) {
+
+
+    const navigate = useNavigate();
 
     const {
         register,
@@ -15,19 +19,12 @@ export default function Form({labe1, labe2, valueMax}) {
     } = useForm();
 
   const  onSubmitForm = (data) => {
-        axios.get("/aventureiro")
-        .then((response) => {
-            
-            const resp = response.data[0]
+    const jsonLogin = {
+        username: data[labe1],
+        password: data[labe2]
+    };
 
-            if(resp[labe1] === data[labe1] && resp[labe2] === data[labe2]){
-                alert("Logado com sucesso!");
-            }
-            else{
-                alert("Credenciais incorretas!");
-            }
-        })
-        .catch(() => {alert("Erro na requisição!")})
+    verifyLogin(jsonLogin, navigate);
    };
 
   return (

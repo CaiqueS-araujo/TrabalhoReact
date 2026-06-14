@@ -2,8 +2,14 @@
 
 
     position: relative;
-    top: 20vh;
-    height: 100vh;
+    min-height: 100vh;
+    background: url("../../assets/backgroundLoginPokemon4.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+      border: 2px solid red;
 }
 
 .logo{
@@ -28,4 +34,8 @@
         0 0 20px rgba(255, 203, 5, 0.2);
 
         width: 70%;
+}
+
+body{
+    background: blue;
 }
