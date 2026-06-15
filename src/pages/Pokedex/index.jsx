@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { searchPokemon } from "../../services/pokeApi";
-import PokedexSearch from "../../components/PokedexSearch";
-import PokedexDisplay from "../../components/PokedexDisplay";
+import { searchPokemon } from ".././../services/pokeApi.js";
+import PokedexSearch from "../../components/Pokedex/Search/index.jsx";
+import PokedexDisplay from "../../components/Pokedex/Display/index.jsx";
 import styles from "./style.module.css";
 
 function Pokedex() {
