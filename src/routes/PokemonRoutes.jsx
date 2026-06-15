@@ -3,6 +3,8 @@ import Login from "../pages/Login";
 import MyTeam from "../pages/MyTeam";
 import Pokedex from "../pages/Pokedex";
 import PrivateRoute from "./PrivateRoute";
+import Error from "../pages/Error";
+
 
 export default function PokemonRoutes() {
   return (
@@ -14,6 +16,8 @@ export default function PokemonRoutes() {
         <Route path = "/pokedex" element = {<PrivateRoute> 
                                                 <Pokedex />
                                             </PrivateRoute>} />
+
+        <Route path="*" element = {<Error />} />
     </Routes>
   )
 }
