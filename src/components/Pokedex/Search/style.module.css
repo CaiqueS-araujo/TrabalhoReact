@@ -1,0 +1,44 @@
+.searchForm {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 12px;
+  border: 3px solid #333;
+  border-radius: 8px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  outline: none;
+  background-color: #fff;
+  box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.15);
+  color: #222;
+}
+
+.searchInput::placeholder {
+  color: #999;
+}
+
+.searchButton {
+  background-color: #2e3035;
+  color: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000000;
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+.searchButton:hover {
+  background-color: #404349;
+}
+
+.searchButton:active {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 #000000;
+}
