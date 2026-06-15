@@ -1,0 +1,72 @@
+.playerWrapper {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(10, 10, 30, 0.82);
+  border: 3px solid #ffcb05;
+  box-shadow: 4px 4px 0px #ffcb05;
+  padding: 0.5rem 0.75rem;
+  font-family: 'Press Start 2P', monospace;
+}
+ 
+.muteBtn {
+  font-size: 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: transform 0.1s;
+  user-select: none;
+}
+ 
+.muteBtn:active {
+  transform: scale(0.85);
+}
+ 
+.muteBtnOn {
+  filter: drop-shadow(0 0 4px #ffcb05);
+}
+ 
+.muteBtnOff {
+  opacity: 0.5;
+}
+ 
+
+.volumeRange {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90px;
+  height: 6px;
+  background: #444;
+  outline: none;
+  border: 2px solid #ffcb05;
+  cursor: pointer;
+  border-radius: 0;
+}
+ 
+.volumeRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #ffcb05;
+  border: 2px solid #1a1a2e;
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #1a1a2e;
+}
+ 
+.volumeRange::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #ffcb05;
+  border: 2px solid #1a1a2e;
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #1a1a2e;
+}

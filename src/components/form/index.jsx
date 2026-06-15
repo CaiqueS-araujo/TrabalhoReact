@@ -6,9 +6,13 @@ import GreenPixeledButton from '../Green-Pixeled-Button';
 import FormLabel from '../Form-Label';
 import { verifyLogin } from '../../services/pokeApi';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { UserLoginContext } from '../../context/UserLoginContext';
 
 export default function Form({ labe1, labe2, valueMax, darkMode }) {
   const navigate = useNavigate();
+
+  const {username, password, setUsername, setPassowrd} = useState(UserLoginContext);
 
   const {
     register,
