@@ -4,18 +4,65 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  background-color: #2A75BB;
+  transition: background-color 0.5s ease;
 }
 
-/* Corpo unificado, exibindo lado a lado */
-.pokedexBody {
+.pokedexContainerDark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #0a0f1a;
+  transition: background-color 0.5s ease;
+}
+
+.themeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border: 3px solid #1a1a2e;
+  background: #f5f5e8;
+  color: #1a1a2e;
+  box-shadow: 4px 4px 0px #1a1a2e;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.themeToggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+.themeToggleDark {
+  background: #1a1a2e;
+  color: #f5f5e8;
+  border-color: #f5f5e8;
+  box-shadow: 4px 4px 0px #f5f5e8;
+}
+
+.themeToggleDark:active {
+  box-shadow: 2px 2px 0px #f5f5e8;
+}
+
+.pokedexBody, .pokedexBodyDark {
   display: flex;
   flex-direction: row;
   max-width: 900px;
   width: 100%;
   filter: drop-shadow(15px 15px 25px rgba(0, 0, 0, 0.6));
+  transition: filter 0.5s ease;
 }
 
-/* --- LADO ESQUERDO --- */
+.pokedexBodyDark {
+  filter: drop-shadow(15px 15px 25px rgba(0, 0, 0, 0.9));
+}
+
 .leftPanel {
   background-color: #dc0a2d;
   flex: 1;
@@ -28,9 +75,24 @@
   flex-direction: column;
   gap: 30px;
   position: relative;
+  transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
-/* Lente de Câmera Azul no topo */
+.leftPanelDark {
+  background-color: #610011;
+  flex: 1;
+  border: 4px solid #2e0008;
+  border-right: none;
+  border-radius: 25px 0 0 25px;
+  padding: 30px;
+  box-shadow: inset -10px -10px 0 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
 .blueLens {
   width: 70px;
   height: 70px;
@@ -40,7 +102,6 @@
   box-shadow: 0 0 0 5px #8b0015;
 }
 
-/* --- DOBRADIÇA CENTRAL --- */
 .hinge {
   width: 40px;
   background: linear-gradient(to right, #8b0015 0%, #e61036 30%, #a80012 80%, #8b0015 100%);
@@ -48,22 +109,33 @@
   border-bottom: 4px solid #8b0015;
   position: relative;
   z-index: 2;
+  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
-/* Linhas decorativas da dobradiça */
-.hinge::before, 
-.hinge::after {
+.hingeDark {
+  width: 40px;
+  background: linear-gradient(to right, #2e0008 0%, #7a0015 30%, #47000c 80%, #2e0008 100%);
+  border-top: 4px solid #2e0008;
+  border-bottom: 4px solid #2e0008;
+  position: relative;
+  z-index: 2;
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.hinge::before, .hinge::after,
+.hingeDark::before, .hingeDark::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   height: 4px;
-  background-color: #8b0015;
 }
-.hinge::before { top: 15%; }
-.hinge::after { bottom: 15%; }
 
-/* --- LADO DIREITO --- */
+.hinge::before, .hinge::after { background-color: #8b0015; }
+.hingeDark::before, .hingeDark::after { background-color: #2e0008; }
+.hinge::before, .hingeDark::before { top: 15%; }
+.hinge::after, .hingeDark::after { bottom: 15%; }
+
 .rightPanel {
   background-color: #dc0a2d;
   flex: 1;
@@ -76,16 +148,31 @@
   flex-direction: column;
   justify-content: center;
   gap: 35px;
-  /* Rebaixa o lado direito um pouco para simular a imagem real */
   margin-top: 60px; 
+  transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
-/* Tela Verde Inferior (SEM BARRA DE ROLAGEM) */
+.rightPanelDark {
+  background-color: #610011;
+  flex: 1;
+  border: 4px solid #2e0008;
+  border-left: none;
+  border-radius: 0 25px 25px 0;
+  padding: 30px;
+  box-shadow: inset -10px -10px 0 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+  margin-top: 60px; 
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
 .infoScreen {
   background-color: #51ae5f;
   border: 4px solid #2e6636;
   border-radius: 10px;
-  min-height: 180px; /* Garante tamanho mínimo, mas cresce se precisar */
+  min-height: 180px; 
   padding: 20px;
   box-shadow: inset 4px 4px 0 0 rgba(0, 0, 0, 0.2);
   display: flex;
@@ -120,3 +207,7 @@
   color: #111;
   animation: blink 1.5s infinite;
 }
+
+
+
+

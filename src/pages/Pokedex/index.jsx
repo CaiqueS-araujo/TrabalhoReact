@@ -9,6 +9,9 @@ function Pokedex() {
   const [pokemon, setPokemon] = useState(null); 
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(""); 
+  
+  // Novo estado para o Modo Escuro
+  const [darkMode, setDarkMode] = useState(false); 
 
   const handleSearch = async (e) => {
     e.preventDefault(); 
@@ -30,17 +33,27 @@ function Pokedex() {
   };
 
   return (
-    <div className={styles.pokedexContainer}>
-      <div className={styles.pokedexBody}>
+    
+    <div className={darkMode ? styles.pokedexContainerDark : styles.pokedexContainer}>
+      
+      <button
+        className={`${styles.themeToggle} ${darkMode ? styles.themeToggleDark : ''}`}
+        onClick={() => setDarkMode(prev => !prev)}
+        aria-label="Alternar modo claro/escuro"
+      >
+        {darkMode ? '☀ LIGHT' : '☾ DARK'}
+      </button>
+
+      <div className={darkMode ? styles.pokedexBodyDark : styles.pokedexBody}>
         
-        <div className={styles.leftPanel}>
+        <div className={darkMode ? styles.leftPanelDark : styles.leftPanel}>
           <div className={styles.blueLens}></div>
           <PokedexDisplay pokemon={pokemon} loading={loading} error={error} />
         </div>
 
-        <div className={styles.hinge}></div>
+        <div className={darkMode ? styles.hingeDark : styles.hinge}></div>
 
-        <div className={styles.rightPanel}>
+        <div className={darkMode ? styles.rightPanelDark : styles.rightPanel}>
           
           <div className={styles.infoScreen}>
             {pokemon ? (
@@ -64,3 +77,5 @@ function Pokedex() {
 }
 
 export default Pokedex;
+
+
