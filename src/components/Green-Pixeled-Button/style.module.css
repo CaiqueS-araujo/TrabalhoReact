@@ -1,5 +1,5 @@
-.ButtonClass{
-    position: absolute;
-    top: 40%;
-    left: 18%;
+.ButtonClass {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }

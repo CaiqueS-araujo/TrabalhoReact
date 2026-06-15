@@ -1,43 +1,50 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'snes.css/dist/snes.min.css';
-import { useForm } from "react-hook-form"
-import * as sytles from './style.module.css'
+import { useForm } from "react-hook-form";
+import * as styles from './style.module.css';
 import GreenPixeledButton from '../Green-Pixeled-Button';
 import FormLabel from '../Form-Label';
 import { verifyLogin } from '../../services/pokeApi';
 import { useNavigate } from 'react-router-dom';
 
-export default function Form({labe1, labe2, valueMax}) {
+export default function Form({ labe1, labe2, valueMax, darkMode }) {
+  const navigate = useNavigate();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const navigate = useNavigate();
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
-
-  const  onSubmitForm = (data) => {
+  const onSubmitForm = (data) => {
     const jsonLogin = {
-        username: data[labe1],
-        password: data[labe2]
+      username: data[labe1],
+      password: data[labe2],
     };
-
     verifyLogin(jsonLogin, navigate);
-   };
+  };
 
   return (
-
-    <div className={sytles.container}>
-        <form onSubmit={handleSubmit((data) => onSubmitForm(data))}>
-
-            <FormLabel labe={labe1} valueMax={valueMax} register={register} errors={errors}> </FormLabel>
-             <FormLabel labe={labe2} valueMax={valueMax} register={register} errors={errors}> </FormLabel>
-            
-            <GreenPixeledButton message="Enviar!"></GreenPixeledButton>
-        </form>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit((data) => onSubmitForm(data))}>
+        <FormLabel
+          labe={labe1}
+          valueMax={valueMax}
+          register={register}
+          errors={errors}
+          darkMode={darkMode}
+        />
+        <FormLabel
+          labe={labe2}
+          valueMax={valueMax}
+          register={register}
+          errors={errors}
+          darkMode={darkMode}
+        />
+        <div className={styles.buttonWrapper}>
+          <GreenPixeledButton message="Enviar!" darkMode = {darkMode}/>
+        </div>
+      </form>
     </div>
-
-  )
+  );
 }

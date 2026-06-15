@@ -1,5 +1,9 @@
-.container{
-    position: relative;
-    top: 20vh;
-    height: 100vh;
+.container {
+  width: 100%;
+}
+ 
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
 }

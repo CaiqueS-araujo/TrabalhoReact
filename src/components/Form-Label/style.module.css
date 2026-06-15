@@ -1,0 +1,73 @@
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.4rem;
+}
+
+.label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: #1a1a2e;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.4s;
+}
+
+.labelDark {
+  color: #ffcb05;
+}
+
+.input {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  padding: 0.6rem 0.75rem;
+  border: 3px solid #1a1a2e;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.85);
+  color: #1a1a2e;
+  outline: none;
+  box-shadow: 3px 3px 0px #1a1a2e;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: #3d5afe;
+  box-shadow: 3px 3px 0px #3d5afe;
+}
+
+.inputDark {
+  background: rgba(10, 10, 30, 0.8);
+  color: #f0f0ff;
+  border-color: #ffcb05;
+  box-shadow: 3px 3px 0px #ffcb05;
+}
+
+.inputDark:focus {
+  border-color: #a78bfa;
+  box-shadow: 3px 3px 0px #a78bfa;
+}
+
+.inputError {
+  border-color: #e53935 !important;
+  box-shadow: 3px 3px 0px #e53935 !important;
+}
+
+.errorSlot {
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.errorMsg {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.42rem;
+  color: #e53935;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.errorMsgDark {
+  color: #ff6b6b;
+}

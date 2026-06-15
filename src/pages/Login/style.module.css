@@ -1,41 +1,152 @@
-.container{
 
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+ 
 
+.root {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+ 
+.root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../../assets/backgroundLoginPokemon4.jpg") center center / cover no-repeat;
+  transition: filter 0.8s ease;
+}
+
+.rootDark{
     position: relative;
-    min-height: 100vh;
-    background: url("../../assets/backgroundLoginPokemon4.jpg");
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-      border: 2px solid red;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
 }
 
-.logo{
-     width: 100%;
-     height: 100%;
+.rootDark::Before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../../assets/backgroundLoginOnNight.jpg") center center / cover no-repeat;
+  transition: filter 0.8s ease;
 }
-
-
-.loginCard{
-        background: rgba(255, 0, 0, 0.397);
-
-    backdrop-filter: blur(15px);
-
-    border: 2px solid rgba(250, 246, 246, 0.2);
-
-    border-radius: 20px;
-
-    padding: 2rem;
-
-    box-shadow:
-        0 8px 32px rgba(17, 17, 17, 0.25),
-        0 0 20px rgba(255, 203, 5, 0.2);
-
-        width: 70%;
+ 
+.bgOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: transparent;
+  transition: background 0.5s ease;
+  pointer-events: none;
 }
-
-body{
-    background: blue;
+ 
+.dark .bgOverlay {
+  background: rgba(0, 0, 20, 0.72);
+}
+ 
+.themeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border: 3px solid #1a1a2e;
+  background: #f5f5e8;
+  color: #1a1a2e;
+  box-shadow: 4px 4px 0px #1a1a2e;
+  image-rendering: pixelated;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+ 
+.themeToggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+ 
+.themeToggleDark {
+  background: #1a1a2e;
+  color: #f5f5e8;
+  border-color: #f5f5e8;
+  box-shadow: 4px 4px 0px #f5f5e8;
+}
+ 
+.themeToggleDark:active {
+  box-shadow: 2px 2px 0px #f5f5e8;
+}
+ 
+.logoWrapper {
+  width: min(320px, 80vw);
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+ 
+.logo {
+  width: 100%;
+  height: auto;
+}
+ 
+.loginCard {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  width: min(420px, 90vw);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(255, 203, 5, 0.25);
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+ 
+.loginCardDark {
+  background: rgba(10, 10, 30, 0.65);
+  border-color: rgba(255, 203, 5, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(255, 203, 5, 0.15);
+}
+ 
+.title {
+  font-size: 0.75rem;
+  text-align: center;
+  color: #1a1a2e;
+  margin-bottom: 0.6rem;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.6);
+  transition: color 0.4s, text-shadow 0.4s;
+  letter-spacing: 0.03em;
+}
+ 
+.titleDark {
+  color: #ffcb05;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8);
+}
+ 
+.subtitle {
+  font-size: 0.42rem;
+  text-align: center;
+  color: #2a2a4a;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  transition: color 0.4s;
+}
+ 
+.subtitleDark {
+  color: #c8c8e8;
 }
