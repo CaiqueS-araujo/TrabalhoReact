@@ -1,0 +1,27 @@
+.battleRoot {
+  position: relative;
+  min-height: 100vh;
+  font-family: "Press Start 2P", monospace;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Overlay de cor sobre o fundo */
+.bgOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: rgba(42, 117, 187, 0.45);
+  transition: background 0.7s ease;
+  pointer-events: none;
+}
+
+.bgOverlayDark {
+  background: rgba(6, 9, 26, 0.8);
+}
+
+/* Todo o conteúdo precisa ficar acima do overlay */
+.content {
+  position: relative;
+  z-index: 1;
+}

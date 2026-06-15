@@ -1,6 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Header({ teamCount, view, setView, goToBattle }) {
+export default function Header({
+  teamCount,
+  view,
+  setView,
+  goToBattle,
+  darkMode,
+  onToggleDark,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -58,6 +65,31 @@ export default function Header({ teamCount, view, setView, goToBattle }) {
         >
           {teamCount}/6
         </span>
+        <button
+          onClick={onToggleDark}
+          aria-label="Alternar modo claro/escuro"
+          title="Alternar modo claro/escuro"
+          style={{
+            background: darkMode ? "#1D2C5E" : "#FFCB05",
+            color: darkMode ? "#FFCB05" : "#1D2C5E",
+            border: `2px solid ${darkMode ? "#FFCB05" : "#1D2C5E"}`,
+            width: 26,
+            height: 26,
+            minWidth: 26,
+            fontSize: 12,
+            fontFamily: '"Press Start 2P",monospace',
+            cursor: "pointer",
+            borderRadius: 4,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            imageRendering: "pixelated",
+            flexShrink: 0,
+            padding: 0,
+          }}
+        >
+          {darkMode ? "☀" : "☾"}
+        </button>
       </div>
 
       {/* abas */}

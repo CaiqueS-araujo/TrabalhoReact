@@ -11,9 +11,14 @@ import {
 import { GEN_RANGES, MAX_TEAM } from "../utils/constants";
 import { calcDmg, sleep } from "../utils/calcDmg";
 import { globalStyles } from "../styles/pokemonTheme";
+import styles from "./MyTeam.module.css";
+
+import bgDay from "../assets/backgroundBattleDay.png";
+import bgNight from "../assets/backgroundBattleNight.png";
 
 export default function MyTeam() {
-  /* ── catálogo ── */
+  const [darkMode, setDarkMode] = useState(false);
+
   const [catalog, setCatalog] = useState([]);
   const [loadingCat, setLoadingCat] = useState(false);
   const [genIdx, setGenIdx] = useState(0);
@@ -21,13 +26,9 @@ export default function MyTeam() {
   const [searchResult, setSearchResult] = useState(null);
   const [searching, setSearching] = useState(false);
 
-  /* ── time ── */
   const [team, setTeam] = useState([]);
+  const [view, setView] = useState("team");
 
-  /* ── navegação ── */
-  const [view, setView] = useState("team"); // "team" | "battle"
-
-  /* ── batalha ── */
   const [selectedIdx, setSelectedIdx] = useState([]);
   const [enemyTeam, setEnemyTeam] = useState([]);
   const [loadingEnemy, setLoadingEnemy] = useState(false);
@@ -35,9 +36,27 @@ export default function MyTeam() {
   const [bs, setBs] = useState(null);
   const [log, setLog] = useState("Escolha um ataque.");
   const [busy, setBusy] = useState(false);
-  const [battleOver, setBattleOver] = useState(null); // "win" | "loss"
+  const [battleOver, setBattleOver] = useState(null);
 
-  /* ── carregar geração ── */
+  // ── Aplica o fundo diretamente no body (evita problemas de z-index) ──
+  useEffect(() => {
+    const bg = darkMode ? bgNight : bgDay;
+    document.body.style.backgroundImage = `url(${bg})`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center center";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.transition = "background-image 0s";
+
+    return () => {
+      document.body.style.backgroundImage = "";
+      document.body.style.backgroundSize = "";
+      document.body.style.backgroundPosition = "";
+      document.body.style.backgroundRepeat = "";
+      document.body.style.backgroundAttachment = "";
+    };
+  }, [darkMode]);
+
   const loadGen = useCallback(async (idx) => {
     const { start, end } = GEN_RANGES[idx];
     setLoadingCat(true);
@@ -61,7 +80,6 @@ export default function MyTeam() {
     loadGen(i);
   };
 
-  /* ── busca ── */
   const doSearch = async () => {
     const q = search.trim().toLowerCase();
     if (!q) return;
@@ -79,7 +97,6 @@ export default function MyTeam() {
     setSearch("");
   };
 
-  /* ── time ── */
   const inTeam = (id) => team.some((p) => p.id === id);
   const addToTeam = (p) => {
     if (inTeam(p.id) || team.length >= MAX_TEAM) return;
@@ -88,7 +105,6 @@ export default function MyTeam() {
   const removeFromTeam = (id) =>
     setTeam((prev) => prev.filter((p) => p.id !== id));
 
-  /* ── ir para batalha ── */
   const goToBattle = async () => {
     setView("battle");
     setSelectedIdx([]);
@@ -110,7 +126,6 @@ export default function MyTeam() {
     setLoadingEnemy(false);
   };
 
-  /* ── selecionar para batalha ── */
   const toggleSelect = (idx) => {
     setSelectedIdx((prev) => {
       if (prev.includes(idx)) return prev.filter((i) => i !== idx);
@@ -119,7 +134,6 @@ export default function MyTeam() {
     });
   };
 
-  /* ── iniciar batalha ── */
   const startBattle = async () => {
     const pQueue = await Promise.all(
       selectedIdx.map((i) => fetchFullStats(team[i].id)),
@@ -134,7 +148,6 @@ export default function MyTeam() {
     setBattleOver(null);
   };
 
-  /* ── usar golpe ── */
   const useMove = async (moveIdx) => {
     if (!bs || busy || battleOver) return;
     setBusy(true);
@@ -145,7 +158,6 @@ export default function MyTeam() {
     const pl = pQueue[pIdx];
     const en = eQueue[eIdx];
 
-    // ataque do jogador
     const moveName = pl.moves[moveIdx] || "investida";
     const power =
       moveIdx === 0
@@ -159,7 +171,6 @@ export default function MyTeam() {
     setBs({ pQueue, eQueue, pIdx, eIdx });
     await sleep(1400);
 
-    // inimigo desmaiou?
     if (en.hp <= 0) {
       eIdx++;
       if (eIdx >= eQueue.length) {
@@ -176,7 +187,6 @@ export default function MyTeam() {
       return;
     }
 
-    // contra-ataque
     const ePower = Math.round(40 + en.atk * 0.25);
     const eMove =
       en.moves[Math.floor(Math.random() * en.moves.length)] || "tackle";
@@ -188,7 +198,6 @@ export default function MyTeam() {
     setBs({ pQueue, eQueue, pIdx, eIdx });
     await sleep(1400);
 
-    // jogador desmaiou?
     if (pl.hp <= 0) {
       pIdx++;
       if (pIdx >= pQueue.length) {
@@ -207,65 +216,66 @@ export default function MyTeam() {
     setBusy(false);
   };
 
-  /* ─────── RENDER ─────── */
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#2A75BB",
-        fontFamily: '"Press Start 2P", monospace',
-        maxWidth: 640,
-        margin: "0 auto",
-      }}
-    >
-      <Header
-        teamCount={team.length}
-        view={view}
-        setView={setView}
-        goToBattle={goToBattle}
+    <div className={styles.battleRoot}>
+      {/* Overlay de cor (fica acima do fundo do body, abaixo do conteúdo) */}
+      <div
+        className={`${styles.bgOverlay} ${darkMode ? styles.bgOverlayDark : ""}`}
       />
 
-      <TeamSlots team={team} removeFromTeam={removeFromTeam} />
-
-      {/* ── ABA MONTAR TIME ── */}
-      {view === "team" && (
-        <PokemonGrid
-          catalog={catalog}
-          loadingCat={loadingCat}
-          team={team}
-          genIdx={genIdx}
-          search={search}
-          searchResult={searchResult}
-          searching={searching}
-          onAdd={addToTeam}
-          onSearch={doSearch}
-          onSearchChange={setSearch}
-          onClearSearch={clearSearch}
-          onGenChange={handleGenChange}
-          onGoToBattle={goToBattle}
+      {/* Todo o conteúdo fica acima do overlay */}
+      <div className={styles.content}>
+        <Header
+          teamCount={team.length}
+          view={view}
+          setView={setView}
+          goToBattle={goToBattle}
+          darkMode={darkMode}
+          onToggleDark={() => setDarkMode((prev) => !prev)}
         />
-      )}
 
-      {/* ── ABA BATALHAR ── */}
-      {view === "battle" && (
-        <div style={{ padding: 14 }}>
-          <BattleArena
-            bs={bs}
-            log={log}
-            busy={busy}
-            battleOver={battleOver}
-            onUseMove={useMove}
-            onRestart={goToBattle}
+        <TeamSlots team={team} removeFromTeam={removeFromTeam} />
+
+        {/* ── ABA MONTAR TIME ── */}
+        {view === "team" && (
+          <PokemonGrid
+            catalog={catalog}
+            loadingCat={loadingCat}
             team={team}
-            selectedIdx={selectedIdx}
-            enemyTeam={enemyTeam}
-            loadingEnemy={loadingEnemy}
-            battleStarted={battleStarted}
-            onToggleSelect={toggleSelect}
-            onStartBattle={startBattle}
+            genIdx={genIdx}
+            search={search}
+            searchResult={searchResult}
+            searching={searching}
+            onAdd={addToTeam}
+            onSearch={doSearch}
+            onSearchChange={setSearch}
+            onClearSearch={clearSearch}
+            onGenChange={handleGenChange}
+            onGoToBattle={goToBattle}
           />
-        </div>
-      )}
+        )}
+
+        {/* ── ABA BATALHAR ── */}
+        {view === "battle" && (
+          <div style={{ padding: 14 }}>
+            <BattleArena
+              bs={bs}
+              log={log}
+              busy={busy}
+              battleOver={battleOver}
+              onUseMove={useMove}
+              onRestart={goToBattle}
+              team={team}
+              selectedIdx={selectedIdx}
+              enemyTeam={enemyTeam}
+              loadingEnemy={loadingEnemy}
+              battleStarted={battleStarted}
+              onToggleSelect={toggleSelect}
+              onStartBattle={startBattle}
+            />
+          </div>
+        )}
+      </div>
 
       <style>{globalStyles}</style>
     </div>
