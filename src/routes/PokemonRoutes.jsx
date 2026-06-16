@@ -9,7 +9,7 @@ import Error from "../pages/Error";
 export default function PokemonRoutes() {
   return (
     <Routes>
-        <Route path = "/" element = {<Login />}/>
+        <Route path = "/" element = {<Pokedex />}/>
         <Route path = "/meu-time" element = {<PrivateRoute> 
                                                 <MyTeam />
                                              </PrivateRoute>} />
