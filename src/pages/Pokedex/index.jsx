@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { searchPokemon } from "../../services/pokeApi";
+import { useNavigate } from "react-router-dom";
 import PokedexSearch from "../../components/Pokedex/Search/index.jsx";
 import PokedexDisplay from "../../components/Pokedex/Display/index.jsx";
 import PokedexFavorites from "../../components/Pokedex/Favorites/index.jsx";
@@ -18,6 +19,13 @@ function Pokedex() {
   useEffect(() => {
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
+
+  //Botão do Home
+  const navigate = useNavigate();
+
+  const pageHome = () =>{
+    navigate("/home");
+  };
 
   const [favorites, setFavorites] = useState(() => {
     const savedFavs = sessionStorage.getItem("pokedex_session_favs");
@@ -83,6 +91,8 @@ function Pokedex() {
 
   return (
     <div className={darkMode ? styles.pokedexContainerDark : styles.pokedexContainer}>
+
+      <button className={styles.botaoHome} onClick={pageHome}>Home</button>
 
       <button
         className={`${styles.themeToggle} ${darkMode ? styles.themeToggleDark : ''}`}

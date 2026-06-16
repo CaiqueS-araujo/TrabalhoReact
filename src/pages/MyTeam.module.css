@@ -25,3 +25,13 @@
   position: relative;
   z-index: 1;
 }
+
+.botaoHome{
+    height: 50px;
+    width: 180px;
+    background-color: rgb(44, 94, 183);
+    color: rgb(255, 202, 0);
+    position: fixed;
+    top: 1rem;
+    right: 90%;
+}

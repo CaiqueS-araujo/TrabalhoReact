@@ -16,6 +16,8 @@ import styles from "./MyTeam.module.css";
 import bgDay from "../assets/backgroundBattleDay.png";
 import bgNight from "../assets/backgroundBattleNight.png";
 
+import { useNavigate } from "react-router-dom";
+
 export default function MyTeam() {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -37,6 +39,13 @@ export default function MyTeam() {
   const [log, setLog] = useState("Escolha um ataque.");
   const [busy, setBusy] = useState(false);
   const [battleOver, setBattleOver] = useState(null);
+
+  //Botão do Home
+  const navigate = useNavigate();
+
+  const pageHome = () =>{
+    navigate("/home");
+  };
 
   // ── Aplica o fundo diretamente no body (evita problemas de z-index) ──
   useEffect(() => {
@@ -218,6 +227,9 @@ export default function MyTeam() {
 
   return (
     <div className={styles.battleRoot}>
+
+      <button className={styles.botaoHome} onClick={pageHome}>Home</button>
+      
       {/* Overlay de cor (fica acima do fundo do body, abaixo do conteúdo) */}
       <div
         className={`${styles.bgOverlay} ${darkMode ? styles.bgOverlayDark : ""}`}

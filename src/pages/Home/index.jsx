@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as styles from './style.module.css'
+import styles from './style.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const pageLogin = () =>{
-    navigate("/login");
+    navigate("/");
   };
 
   const pageTime = () =>{
@@ -33,9 +33,9 @@ export default function Home() {
               >
                 {darkMode ? '☀️ LIGHT' : '☾ DARK'}
             </button>
-            <button className={styles.botaoLogNormal} onClick={pageLogin}>Login</button>
-            <button className={styles.botaoDexNormal} onClick={pageTime}>Time</button>
-            <button className={styles.botaoTeamNormal} onClick={pageDex}>Pokedex</button>
+            <button className={styles.botaoLog} onClick={pageLogin}>Login</button>
+            <button className={styles.botaoDex} onClick={pageTime}>Time</button>
+            <button className={styles.botaoTeam} onClick={pageDex}>Pokedex</button>
             
 
           </div>

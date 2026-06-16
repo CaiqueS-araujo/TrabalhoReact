@@ -53,7 +53,7 @@ export  function verifyLogin(user, navigate){
      axios.post(`${url}`, user)
           .then((response) => {
                   localStorage.setItem("token", response.token);
-                  navigate("/meu-time");
+                  navigate("/home");
           })
           .catch(() => {
             alert("Credenciais incorretas!")

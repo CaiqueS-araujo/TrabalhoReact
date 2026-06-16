@@ -18,57 +18,33 @@
     background-color: black;
 }
 
-.botaoLogNormal{
+.botaoLog{
     height: 50px;
     width: 180px;
     background-color: rgb(44, 94, 183);
     color: rgb(255, 202, 0);
     position: fixed;
+    top: 1rem;
     right: 90%;
 }
 
-.botaoLogDark{
+.botaoDex{
     height: 50px;
     width: 180px;
     background-color: rgb(44, 94, 183);
     color: rgb(255, 202, 0);
     position: fixed;
-    right: 90%;
-}
-
-.botaoDexNormal{
-    height: 50px;
-    width: 180px;
-    background-color: rgb(44, 94, 183);
-    color: rgb(255, 202, 0);
-    position: fixed;
+    top: 1rem;
     right: 78%;
 }
 
-.botaoDexDark{
+.botaoTeam{
     height: 50px;
     width: 180px;
     background-color: rgb(44, 94, 183);
     color: rgb(255, 202, 0);
     position: fixed;
-    right: 78%;
-}
-
-.botaoTeamNormal{
-    height: 50px;
-    width: 180px;
-    background-color: rgb(44, 94, 183);
-    color: rgb(255, 202, 0);
-    position: fixed;
-    right: 65.9%;
-}
-
-.botaoTeamDark{
-    height: 50px;
-    width: 180px;
-    background-color: rgb(44, 94, 183);
-    color: rgb(255, 202, 0);
-    position: fixed;
+    top: 1rem;
     right: 65.9%;
 }
 
