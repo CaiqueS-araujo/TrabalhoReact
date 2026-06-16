@@ -1,0 +1,105 @@
+.container{
+    width: 100%;
+    height: 20vh
+}
+
+.themeNormal{
+    inset: 0;
+    position: fixed;
+    background: url("../../assets/background-capa.jpg") center center / contain no-repeat;
+    background-size: 100% 100%;
+}
+
+.themeDark{
+    inset: 0;
+    position: fixed;
+    background: url("../../assets/background-capa2.jpg") center center / contain no-repeat;
+    background-size: 33% 100%;
+    background-color: black;
+}
+
+.botaoLogNormal{
+    height: 50px;
+    width: 180px;
+    background-color: rgb(44, 94, 183);
+    color: rgb(255, 202, 0);
+    position: fixed;
+    right: 90%;
+}
+
+.botaoLogDark{
+    height: 50px;
+    width: 180px;
+    background-color: rgb(44, 94, 183);
+    color: rgb(255, 202, 0);
+    position: fixed;
+    right: 90%;
+}
+
+.botaoDexNormal{
+    height: 50px;
+    width: 180px;
+    background-color: rgb(44, 94, 183);
+    color: rgb(255, 202, 0);
+    position: fixed;
+    right: 78%;
+}
+
+.botaoDexDark{
+    height: 50px;
+    width: 180px;
+    background-color: rgb(44, 94, 183);
+    color: rgb(255, 202, 0);
+    position: fixed;
+    right: 78%;
+}
+
+.botaoTeamNormal{
+    height: 50px;
+    width: 180px;
+    background-color: rgb(44, 94, 183);
+    color: rgb(255, 202, 0);
+    position: fixed;
+    right: 65.9%;
+}
+
+.botaoTeamDark{
+    height: 50px;
+    width: 180px;
+    background-color: rgb(44, 94, 183);
+    color: rgb(255, 202, 0);
+    position: fixed;
+    right: 65.9%;
+}
+
+.themeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border: 3px solid #1a1a2e;
+  background: #f5f5e8;
+  color: #1a1a2e;
+  box-shadow: 4px 4px 0px #1a1a2e;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.themeToggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+.themeToggleDark {
+  background: #1a1a2e;
+  color: #f5f5e8;
+  border-color: #f5f5e8;
+  box-shadow: 4px 4px 0px #f5f5e8;
+}
+
+.themeToggleDark:active {
+  box-shadow: 2px 2px 0px #f5f5e8;
+}

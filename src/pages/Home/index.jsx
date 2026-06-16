@@ -1,0 +1,49 @@
+import { useState } from "react";
+import * as styles from './style.module.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useNavigate } from "react-router-dom";
+
+export default function Home() {
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  const navigate = useNavigate();
+
+  const pageLogin = () =>{
+    navigate("/login");
+  };
+
+  const pageTime = () =>{
+    navigate("/meu-time");
+  };
+
+  const pageDex = () =>{
+    navigate("/pokedex");
+  };
+
+  return (
+    <div className={darkMode ? styles.themeDark : styles.themeNormal}>
+    <header>
+        <div className={`d-flex align-items-center  ${styles.container}`}>
+          <div className='d-flex justify-content-start'>
+            <button
+            className={`${styles.themeToggle} ${darkMode ? styles.themeToggleDark : ''}`}
+              onClick={() => setDarkMode(prev => !prev)}
+              arial-label="Alternar modo claro/escuro"
+              >
+                {darkMode ? '☀️ LIGHT' : '☾ DARK'}
+            </button>
+            <button className={styles.botaoLogNormal} onClick={pageLogin}>Login</button>
+            <button className={styles.botaoDexNormal} onClick={pageTime}>Time</button>
+            <button className={styles.botaoTeamNormal} onClick={pageDex}>Pokedex</button>
+            
+
+          </div>
+        </div>
+    </header>
+    
+    <div className={`${styles.home}`}>
+    </div>
+    </div>
+  )
+}
