@@ -205,7 +205,7 @@ LigaPokemon/
 
 ## Back-End
 
-* Java 17.0.2 LTS ou superior
+* Java 17.0.2 LTS
 * Java configurado nas variáveis de ambiente do sistema
 
 ---
