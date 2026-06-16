@@ -48,7 +48,7 @@ export async function fetchFullStats(id) {
 }
 
 export  function verifyLogin(user, navigate){
-      const url = import.meta.env.VITE_LOGIN_URL;
+      const url = 'http://localhost:8080/login';
 
      axios.post(`${url}`, user)
           .then((response) => {
